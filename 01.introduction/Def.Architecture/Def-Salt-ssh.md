@@ -1,0 +1,5 @@
+"Salt-ssh" est un mode de fonctionnement de SaltStack qui permet l'automatisation des tâches sur des machines distantes sans nécessiter l'installation d'un agent Salt (Minion) sur ces machines. À la place, Salt-ssh utilise le protocole SSH pour établir une connexion sécurisée avec les systèmes distants et exécuter les commandes spécifiées.
+
+Dans ce mode, la machine qui exécute Salt-ssh n'agit pas en tant que maître (master) de manière permanente, comme c'est le cas dans le mode maître/agent traditionnel. Au lieu de cela, Salt-ssh peut être invoqué sur une machine pour effectuer des tâches d'automatisation sur d'autres machines accessibles via SSH.
+
+Cela rend Salt-ssh particulièrement adapté à des scénarios où l'installation d'un agent n'est pas souhaitable ou possible, mais où l'automatisation à distance reste nécessaire. Les utilisateurs peuvent définir des états (states) et exécuter des commandes Salt sur des machines distantes en utilisant le protocole SSH pour établir la communication sécurisée, offrant ainsi une flexibilité dans la gestion des configurations et des tâches automatisées.

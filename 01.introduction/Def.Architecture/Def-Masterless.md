@@ -1,0 +1,5 @@
+"Masterless" est un mode de fonctionnement de SaltStack où un système n'agit pas en tant que maître (master). Dans ce mode, la machine exécute localement des fichiers d'états (state files) sans nécessiter la présence d'un serveur maître pour coordonner les opérations.
+
+Contrairement au mode maître/agent traditionnel de SaltStack, où le maître envoie des commandes aux agents (Minions) pour les exécuter, le mode "masterless" permet à une machine d'appliquer ses propres états sans dépendre d'un maître externe.
+
+Cela peut être particulièrement utile dans des scénarios où la centralisation n'est pas nécessaire, comme pour des configurations locales, des tests ou des déploiements autonomes sur des machines individuelles. Dans le mode "masterless", les fichiers d'états définissent l'état souhaité du système et sont directement appliqués sur la machine locale, simplifiant ainsi le processus de gestion des configurations.
