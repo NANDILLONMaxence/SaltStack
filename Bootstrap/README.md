@@ -34,7 +34,7 @@ Cette partie contient un script personnalisé conçu pour faciliter l'installati
 | OS           | Supported          |
 | ------------ | ------------------ |
 | Ubuntu       | :white_check_mark: |
-| Debian       |        ❔          |
+| Debian       | :white_check_mark: |
 | CentOS       |        ❔          |
 | Amazon       |        :x:         |
 | Red Hat      |        :x:         |
