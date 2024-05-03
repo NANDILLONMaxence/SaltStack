@@ -45,6 +45,8 @@ install_salt_packages() {
 
 install_salt_ubuntu() {
     show_message "La distribution Ubuntu est prise en charge..."
+    # Prérequis
+    sudo apt install -y curl 
     # Ajout du dépôt SaltStack pour Ubuntu
     sudo mkdir -p /etc/apt/keyrings/
     sudo curl -fsSL -o /etc/apt/keyrings/$name_gpg $repo_ubuntu_gpg
@@ -56,12 +58,14 @@ install_salt_ubuntu() {
 
 install_salt_debian() {
     show_message "La distribution Debian est prise en charge..."
+    # Prérequis
+    sudo apt install -y curl 
     # Ajout du dépôt SaltStack pour Debian
     sudo mkdir -p /etc/apt/keyrings/
     sudo curl -fsSL -o /etc/apt/keyrings/$name_gpg $repo_debian_gpg
     echo "deb $salt_archive_keyring https://repo.saltproject.io/salt/py3/debian/$(lsb_release -rs)/amd64/latest $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/salt.list
     sudo apt update
-	show_message "Installation des services Salt : (salt-master salt-minion salt-syndic salt-api salt-ssh salt-cloud) ..."
+    show_message "Installation des services Salt : (salt-master salt-minion salt-syndic salt-api salt-ssh salt-cloud) ..."
     sudo apt install -y salt-master salt-minion salt-ssh salt-syndic salt-cloud salt-api
 }
 
@@ -126,14 +130,14 @@ configure_salt_minion() {
         
         # Tant que le fichier spécifié n'est pas trouvé, continuer à demander le nom du fichier
         while [ "$fichier_trouve" = false ]; do
-			show_message "NOTE : Il est recommandé de placer le fichier de configuration dans le même dossier que celui du script actuellement en cours d'exécution."
+	    show_message "NOTE : Il est recommandé de placer le fichier de configuration dans le même dossier que celui du script actuellement en cours d'exécution."
             show_message "Entrez le nom du nouveau fichier de configuration :"
-			read -p "" nouveau_fichier
+	    read -p "" nouveau_fichier
 
             # Vérifier si le fichier existe
             if [ -e "$nouveau_fichier" ]; then
-				show_message "Vérification du fichier spécifier..."
-				show_message "Fichier trouvé !"
+		show_message "Vérification du fichier spécifier..."
+		show_message "Fichier trouvé !"
                 # Remplacer le fichier de configuration par le nouveau fichier
                 cp "$nouveau_fichier" /etc/salt/minion
                 show_message "Le fichier de configuration a été remplacé avec succès."
@@ -173,7 +177,7 @@ manage_salt_services() {
     # Afficher la liste des services et demander à l'utilisateur de sélectionner ceux qu'il souhaite activé et démarré.
     selected_services=()
     for service in "${SERVICES[@]}"; do
-		show_message "Voulez-vous activer et démarrer le service $service ? (yes/no)"
+	show_message "Voulez-vous activer et démarrer le service $service ? (yes/no)"
         read -p "" START_SERVICE
         if [ "$START_SERVICE" = "yes" ] || [ "$START_SERVICE" = "y" ]; then
             selected_services+=("$service")
