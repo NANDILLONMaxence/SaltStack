@@ -87,10 +87,10 @@ create_and_organize_directories() {
 
 # Vérifier et mettre à jour la configuration dans le fichier master
 configure_salt_master() {
-	show_message "Configuration du master..."
+    show_message "Configuration du master..."
     # Demander à l'utilisateur s'il souhaite remplacer le fichier de configuration
     show_message "Voulez-vous remplacer le fichier de configuration du maître Salt par un autre ? (yes/no)" 
-	read -p "" reponse
+    read -p "" reponse
     # Si la réponse est yes, demander le nom du nouveau fichier
     if [ "$reponse" = "yes" ] || [ "$reponse" = "y" ]; then
         fichier_trouve=false
@@ -103,8 +103,8 @@ configure_salt_master() {
 
             # Vérifier si le fichier existe
             if [ -e "$nouveau_fichier" ]; then
-				show_message "Vérification du fichier spécifier..."
-				show_message "Fichier trouvé !"
+		show_message "Vérification du fichier spécifier..."
+		show_message "Fichier trouvé !"
                 # Remplacer le fichier de configuration par le nouveau fichier
                 cp "$nouveau_fichier" /etc/salt/master
                 show_message "Le fichier de configuration du maître Salt a été remplacé avec succès."
@@ -120,10 +120,10 @@ configure_salt_master() {
 	
 # Configuration du minion SaltStack
 configure_salt_minion() {
-	show_message "Configuration du minion..."
+    show_message "Configuration du minion..."
     # Demander à l'utilisateur s'il souhaite remplacer le fichier de configuration minion
     show_message "Voulez-vous remplacer le fichier de configuration de base par un autre ? (yes/no)" 
-	read -p "" reponse
+    read -p "" reponse
     # Si la réponse est yes, demander le nom du nouveau fichier
     if [ "$reponse" = "yes" ] || ["$reponse" = "y" ]; then
         fichier_trouve=false
