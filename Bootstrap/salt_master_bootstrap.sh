@@ -97,7 +97,7 @@ configure_salt_master() {
         
         # Tant que le fichier spécifié n'est pas trouvé, continuer à demander le nom du fichier
         while [ "$fichier_trouve" = false ]; do
-			show_message "NOTE : Il est recommandé de placer le fichier de configuration dans le même dossier que celui du script actuellement en cours d'exécution."
+	    show_message "NOTE : Il est recommandé de placer le fichier de configuration dans le même dossier que celui du script actuellement en cours d'exécution."
             show_message "Entrez le nom du nouveau fichier de configuration :"
             read -p "" nouveau_fichier
 
